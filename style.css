@@ -1,0 +1,323 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Helvetica', sans-serif;
+}
+
+body {
+  background: #000;
+  color: #d4af37;
+}
+
+/* Header */
+header {
+  display: flex;              /* flexbox for horizontal layout */
+  justify-content: space-between; /* logo left, menu right */
+  align-items: center;        /* vertical alignment */
+  padding: 15px 30px;         /* spacing inside header */
+  align-items: flex-start;
+  background: #000;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+/* Logo */
+.logo {
+  width: 80px;
+  height: 80px;
+  margin: 0;
+}
+
+.pic {
+  width: 100%;                /* fill logo container */
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;         /* makes it circular */
+  box-shadow: 0px 0px 10px #d4af37;
+}
+
+/* Hamburger Menu */
+.menu-icon {
+  font-size: 35px;
+  color: #d4af37;
+  cursor: pointer;
+}
+
+/* Nav Menu Slide */
+nav {
+  display: none;
+  flex-direction: column;
+  background: rgba(0,0,0,0.95);
+  position: absolute;
+  right: 0;
+  top: 60px;
+  width: 200px;
+  padding: 20px;
+}
+
+nav a {
+  color: #d4af37;
+  padding: 12px 0;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+
+/* Slideshow */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 85vh;           /* You can change to 70vh for taller screens */
+  overflow: hidden;
+  background: #000;       /* fallback background for empty areas */
+  margin-top: 80px;
+}
+
+.slide {
+  position: absolute;     /* stack slides on top of each other */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;        /* fit the whole image inside hero */
+  object-position: center;    /* center image */
+  display: block;
+  background: #000;           /* black behind if image smaller than container */
+  
+}
+
+/* Dark overlay for text readability */
+.slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+/* Text on slides */
+.text-box {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 80%;
+  color: #d4af37;
+  text-shadow: 2px 2px 10px black;
+  z-index: 2; /* above overlay */
+}
+
+.text-box h1 {
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 9px;
+  font-family: 'Playfair Display', serif;
+}
+
+.text-box p {
+  font-size: 20px;
+  margin-top: 0;
+  font-family: 'Playfair Display', serif;
+}
+
+
+
+
+
+
+
+/* General Services Section */
+.services-section {
+  padding: 120px 30px 50px; /* top padding to avoid header overlap */
+  background: #111;          /* dark background */
+  color: #d4af37;            /* gold text */
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+}
+
+.services-section h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.services-section .loc {
+  font-size: 20px;
+  margin-bottom: 40px;
+  color: #d4af37;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Category Headings */
+.services-section h3 {
+  font-size: 28px;
+  margin: 40px 0 20px;
+  border-bottom: 2px solid #d4af37;
+  display: inline-block;
+  padding-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+/* Service Tables */
+.services-table {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  border-collapse: collapse;
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.services-table th, .services-table td {
+  padding: 15px 20px;
+  color: #d4af37;
+  text-align: left;
+}
+
+.services-table th {
+  background: #000;
+  font-size: 18px;
+}
+
+.services-table tr:nth-child(odd) {
+  background: rgb(12, 12, 12);
+}
+
+/* Buttons */
+.services-table button {
+  background: #d4af37;
+  color: #000;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.services-table button:hover {
+  background: #f0d27a;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .services-table {
+    width: 100%;
+  }
+
+  .services-section h3 {
+    font-size: 24px;
+  }
+}
+
+
+
+
+
+/* GALLERY PAGE */
+.gallery-section {
+  margin-top: 150px;
+  text-align: center;
+}
+
+.gallery-section h2 {
+  font-size: 35px;
+  color: #d4af37;
+  margin-bottom: 20px;
+}
+
+.category-title {
+  font-size: 24px;
+  color: #fff;
+  margin: 25px 0 10px;
+  border-bottom: 1px solid #d4af37;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 5px;
+}
+
+.gallery-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.gallery-row img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+  transition: 0.4s;
+}
+
+.gallery-row img:hover {
+  transform: scale(1.05);
+}
+.gallery-row video {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+  transition: 0.4s;
+}
+
+
+
+/* About Section */
+.about-section {
+  padding: 120px 30px 50px;
+  background: #111;
+  color: #d4af37;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+}
+
+.about-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  border-bottom: 2px solid #d4af37;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.about-section p {
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 20px auto;
+  color: #f0d27a;
+}
+
+
+
